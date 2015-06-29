@@ -1,7 +1,8 @@
 import sys
 
 try:
-    import tty, termios
+    import termios
+    import tty
 except ImportError:
     # Probably Windows.
     try:
@@ -29,6 +30,9 @@ else:
         try:
             tty.setraw(fd)
             ch = sys.stdin.read(1)
+            if ch == '\x1b':  # arrow key control character
+                ch += sys.stdin.read(2)
+
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
