@@ -5,8 +5,10 @@ portals = [[   1,  1,   1, -1,   1,  0 ],
            [  -1, -1,  -1,  1,  -1,  0 ],
            [   1, -1,  -1, -1,   0, -1 ]]
 
+
 def a_right_of_b(ax, ay, bx, by):
     return ax * by > ay * bx
+
 
 class Visibility(object):
     def __init__(self, board):
